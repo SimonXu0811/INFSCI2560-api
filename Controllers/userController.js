@@ -72,3 +72,15 @@ exports.getOrderHistory = (req, res) => {
     })
 };
 
+exports.getItemsById = (req, res) => {
+    userService.getItemsById(req.params._id, (err, item) => {
+        if (err) {
+            res.status(401).send(err);
+        }else if (!item) {
+            res.status(401).send({message: 'No items are found!'});
+        } else {
+            res.send(item);
+        }
+    })
+};
+

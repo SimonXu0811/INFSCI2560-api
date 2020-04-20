@@ -16,4 +16,6 @@ router.put('/updateUserInfo/:username', authorize(Role.User), userController.upd
 
 router.get('/orderHistory/:username', authorize(Role.User), userController.getOrderHistory);
 
+router.get('/getItemsById/:_id', authorize(Role.User), userController.getItemsById);
+
 module.exports = router;

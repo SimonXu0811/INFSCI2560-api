@@ -132,3 +132,15 @@ exports.getOrderHistory = (username, callback) => {
         return callback(null, OrderHistory);
     })
 };
+
+exports.getItemsById = (id, callback) => {
+    Items.findById(id, (err, item) => {
+        if (err) {
+            return callback(err);
+        }else if (! item) {
+            return  callback(null, null);
+        }else {
+            return callback(null, item);
+        }
+    })
+};
