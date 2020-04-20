@@ -1,0 +1,31 @@
+const Item = require('../Models/Items');
+
+module.exports = {
+    getAllItems,
+    searchItems
+};
+
+function getAllItems(callback) {
+    Item.find({},(err, items) => {
+        if (err) {
+            return callback(err);
+        }else if (!items) {
+            return callback(null, null);
+        }else {
+            return callback(null, items);
+        }
+    })
+}
+
+function searchItems(category, name, callback) {
+    Item.find({category: category, name: new RegExp(name, 'i')}, (err, items) => {
+        if (err) {
+            return callback(err);
+        } else if (!items) {
+            return callback(null, null);
+        } else {
+            return callback(null, items);
+        }
+    })
+};
+
